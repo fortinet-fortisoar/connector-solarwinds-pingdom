@@ -1,0 +1,393 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "4c767cad-4692-4171-9546-fdd4309d9078",
+          "collection": "/api/3/workflow_collections/90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+          "steps": [
+            {
+              "uuid": "e1424817-362a-4b22-8804-3e4f86124ccf",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1100b98f-edff-499f-ba8c-13b9f8b1f3ee",
+              "@type": "WorkflowStep",
+              "name": "Get Alerts List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Solarwinds Pingdom",
+                "config": "''",
+                "params": {
+                  "checkids": "",
+                  "from": "",
+                  "to": "",
+                  "status": "",
+                  "userids": "",
+                  "via": "",
+                  "limit": "",
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "solarwinds-pingdom",
+                "operation": "get_alerts_list",
+                "operationTitle": "Get Alerts List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of alerts based on the parameters that you have specified.",
+          "name": "Get Alerts List",
+          "tag": "#Solarwinds Pingdom",
+          "recordTags": [
+            "Solarwinds",
+            "solarwinds-pingdom"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e1424817-362a-4b22-8804-3e4f86124ccf",
+          "routes": [
+            {
+              "uuid": "913b741e-bd0b-4be9-be48-f04f4b58aaeb",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Alerts List",
+              "sourceStep": "/api/3/workflow_steps/e1424817-362a-4b22-8804-3e4f86124ccf",
+              "targetStep": "/api/3/workflow_steps/1100b98f-edff-499f-ba8c-13b9f8b1f3ee"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "3de2ef96-fbe8-4d5d-a147-fabbd160e329",
+          "collection": "/api/3/workflow_collections/90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+          "steps": [
+            {
+              "uuid": "0f6867eb-d967-42e3-a092-5068287bd65e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "8251d3e8-508c-40cf-a992-2f36be86e23f",
+              "@type": "WorkflowStep",
+              "name": "Get Checks List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Solarwinds Pingdom",
+                "config": "''",
+                "params": {
+                  "include_severity": "",
+                  "include_tags": "",
+                  "showencryption": "",
+                  "tags": "",
+                  "limit": "",
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "solarwinds-pingdom",
+                "operation": "get_checks_list",
+                "operationTitle": "Get Checks List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of checks based on the parameters that you have specified.",
+          "name": "Get Checks List",
+          "tag": "#Solarwinds Pingdom",
+          "recordTags": [
+            "Solarwinds",
+            "solarwinds-pingdom"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0f6867eb-d967-42e3-a092-5068287bd65e",
+          "routes": [
+            {
+              "uuid": "a2e2ae21-5cae-428a-b786-85efe65bdfb9",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Checks List",
+              "sourceStep": "/api/3/workflow_steps/0f6867eb-d967-42e3-a092-5068287bd65e",
+              "targetStep": "/api/3/workflow_steps/8251d3e8-508c-40cf-a992-2f36be86e23f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "1e09f757-ecca-4131-b270-4ad442c472ac",
+          "collection": "/api/3/workflow_collections/90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+          "steps": [
+            {
+              "uuid": "4565a482-cd2e-4c4e-8234-4056df4ab8a0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "db139c87-425b-4d23-a8ca-fe2800574273",
+              "@type": "WorkflowStep",
+              "name": "Get Root Cause Analysis",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Solarwinds Pingdom",
+                "config": "''",
+                "params": {
+                  "checkid": "",
+                  "from": "",
+                  "to": "",
+                  "limit": "",
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "solarwinds-pingdom",
+                "operation": "get_root_cause_analysis",
+                "operationTitle": "Get Root Cause Analysis"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of the latest root cause analysis based on the parameters that you have specified.",
+          "name": "Get Root Cause Analysis",
+          "tag": "#Solarwinds Pingdom",
+          "recordTags": [
+            "Solarwinds",
+            "solarwinds-pingdom"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4565a482-cd2e-4c4e-8234-4056df4ab8a0",
+          "routes": [
+            {
+              "uuid": "f1ed9ec0-3ce5-4708-9ec0-15a93a0c6986",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Root Cause Analysis",
+              "sourceStep": "/api/3/workflow_steps/4565a482-cd2e-4c4e-8234-4056df4ab8a0",
+              "targetStep": "/api/3/workflow_steps/db139c87-425b-4d23-a8ca-fe2800574273"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ba4345dc-7ea8-4ba1-95ac-abd25196eba3",
+          "collection": "/api/3/workflow_collections/90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+          "steps": [
+            {
+              "uuid": "4afb989d-eaa3-44d5-8546-c0b63869c267",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "a8c6d9a2-9624-4e46-a677-521153ca3aa1",
+              "@type": "WorkflowStep",
+              "name": "Get Result of Analysis",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Solarwinds Pingdom",
+                "config": "''",
+                "params": {
+                  "analysisid": "",
+                  "checkid": ""
+                },
+                "version": "1.0.0",
+                "connector": "solarwinds-pingdom",
+                "operation": "get_result_of_analysis",
+                "operationTitle": "Get Result of Analysis"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the raw result based on the parameters that you have specified.",
+          "name": "Get Result of Analysis",
+          "tag": "#Solarwinds Pingdom",
+          "recordTags": [
+            "Solarwinds",
+            "solarwinds-pingdom"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4afb989d-eaa3-44d5-8546-c0b63869c267",
+          "routes": [
+            {
+              "uuid": "f689c1ef-775a-48f4-ba9e-7d0b46b63588",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Result of Analysis",
+              "sourceStep": "/api/3/workflow_steps/4afb989d-eaa3-44d5-8546-c0b63869c267",
+              "targetStep": "/api/3/workflow_steps/a8c6d9a2-9624-4e46-a677-521153ca3aa1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d0496d38-dd45-4d70-a28a-b47ee88c7d8a",
+          "collection": "/api/3/workflow_collections/90fddf3b-0282-4d4a-9416-21c57fcbe10c",
+          "steps": [
+            {
+              "uuid": "45894fd8-3b66-4ea8-9485-a85171dd1551",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "2b307305-3aa8-46ed-b353-bf7752af7584",
+              "@type": "WorkflowStep",
+              "name": "Get Raw Test Results List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Solarwinds Pingdom",
+                "config": "''",
+                "params": {
+                  "checkid": "",
+                  "from": "",
+                  "to": "",
+                  "maxresponse": "",
+                  "minresponse": "",
+                  "probes": "",
+                  "status": "",
+                  "limit": "",
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "solarwinds-pingdom",
+                "operation": "get_raw_test_results_list",
+                "operationTitle": "Get Raw Test Results List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of raw test results based on the parameters that you have specified.",
+          "name": "Get Raw Test Results List",
+          "tag": "#Solarwinds Pingdom",
+          "recordTags": [
+            "Solarwinds",
+            "solarwinds-pingdom"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/45894fd8-3b66-4ea8-9485-a85171dd1551",
+          "routes": [
+            {
+              "uuid": "b58f20d3-30c6-4395-b61d-eec3c91d52c0",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Raw Test Results List",
+              "sourceStep": "/api/3/workflow_steps/45894fd8-3b66-4ea8-9485-a85171dd1551",
+              "targetStep": "/api/3/workflow_steps/2b307305-3aa8-46ed-b353-bf7752af7584"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - Solarwinds Pingdom - 1.0.0",
+      "description": "Solarwinds Pingdom makes your websites faster and more reliable with easy-to-use web performance and digital experience monitoring.",
+      "visible": true,
+      "recordTags": [
+        "Solarwinds",
+        "solarwinds-pingdom"
+      ]
+    }
+  ]
+}

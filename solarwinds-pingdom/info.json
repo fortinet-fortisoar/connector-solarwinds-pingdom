@@ -1,0 +1,500 @@
+{
+  "name": "solarwinds-pingdom",
+  "label": "Solarwinds Pingdom",
+  "description": "Solarwinds Pingdom makes your websites faster and more reliable with easy-to-use web performance and digital experience monitoring.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "IT Service Management",
+  "icon_large_name": "large.png",
+  "icon_small_name": "small.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "description": "Specify the server URL to connect and perform the automated operations.",
+        "tooltip": "Specify the server URL to connect and perform the automated operations.",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "placeholder": "https://api.pingdom.com"
+      },
+      {
+        "title": "API Token",
+        "description": "Specify the API token to connect and perform the automated operations.",
+        "tooltip": "Specify the API token to connect and perform the automated operations.",
+        "name": "api_token",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "type": "password"
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.",
+        "required": false,
+        "visible": true,
+        "editable": true,
+        "type": "checkbox",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_alerts_list",
+      "title": "Get Alerts List",
+      "description": "Retrieves the detailed list of alerts based on the parameters that you have specified.",
+      "annotation": "get_alerts_list",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Alert IDs",
+          "description": "Specify the comma separated values of alert IDs.",
+          "tooltip": "Specify the comma separated values of alert IDs.",
+          "name": "checkids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Start Datetime",
+          "name": "from",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "to",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Status",
+          "description": "Specify the comma separated values of status to filter the records.",
+          "tooltip": "Specify the comma separated values of status to filter the records.",
+          "name": "status",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "User IDs",
+          "description": "Specify the comma separated values of user IDs to filter the records.",
+          "tooltip": "Specify the comma separated values of user IDs to filter the records.",
+          "name": "userids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Via Medium",
+          "description": "Specify the comma separated values of via mediums to filter the records.",
+          "tooltip": "Specify the comma separated values of via mediums to filter the records.",
+          "name": "via",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of records to return in response. Default value is 100.",
+          "tooltip": "Specify the maximum number of records to return in response. Default value is 100.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Default value is 0.",
+          "tooltip": "Specify the offset to fetch the records. Default value is 0.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        }
+      ],
+      "output_schema": {
+        "actions": {
+          "alerts": [
+            {
+              "username": "",
+              "userid": "",
+              "checkid": "",
+              "time": "",
+              "via": "",
+              "status": "",
+              "messageshort": "",
+              "messagefull": "",
+              "sentto": "",
+              "charged": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "get_checks_list",
+      "title": "Get Checks List",
+      "description": "Retrieves the detailed list of checks based on the parameters that you have specified.",
+      "annotation": "get_alerts_list",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Include Severity",
+          "description": "Select to include severity level in response records.",
+          "tooltip": "Select to include severity level in response records.",
+          "name": "include_severity",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox"
+        },
+        {
+          "title": "Include tags",
+          "description": "Select to include tags in response records.",
+          "tooltip": "Select to include tags in response records.",
+          "name": "include_tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox"
+        },
+        {
+          "title": "Show Encryption",
+          "description": "Select to show the encryption setting in response records.",
+          "tooltip": "Select to show the encryption setting in response records.",
+          "name": "showencryption",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox"
+        },
+        {
+          "title": "Tags",
+          "description": "Specify the comma separated values of tags to filter the records.",
+          "tooltip": "Specify the comma separated values of tags to filter the records.",
+          "name": "tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "nginx,apache"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of records to return in response. Maximum value is 25000.",
+          "tooltip": "Specify the maximum number of records to return in response. Maximum value is 100.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Default value is 0.",
+          "tooltip": "Specify the offset to fetch the records. Default value is 0.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        }
+      ],
+      "output_schema": {
+        "checks": [
+          {
+            "type": "",
+            "id": "",
+            "name": "",
+            "lasterrortime": "",
+            "lasttesttime": "",
+            "lastresponsetime": "",
+            "lastdownstart": "",
+            "lastdownend": "",
+            "status": "",
+            "resolution": "",
+            "hostname": "",
+            "created": "",
+            "tags": [
+              {
+                "name": "",
+                "type": "",
+                "count": ""
+              }
+            ],
+            "ipv6": ""
+          }
+        ],
+        "counts": {
+          "total": "",
+          "limited": "",
+          "filtered": ""
+        }
+      }
+    },
+    {
+      "operation": "get_root_cause_analysis",
+      "title": "Get Root Cause Analysis",
+      "description": "Retrieves the detailed list of the latest root cause analysis based on the parameters that you have specified.",
+      "annotation": "get_root_cause_analysis",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Check ID",
+          "description": "Specify the check ID to get the root cause analysis.",
+          "tooltip": "Specify the check ID to get the root cause analysis.",
+          "name": "checkid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Start Datetime",
+          "name": "from",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "to",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of records to return in response. Default value is 100.",
+          "tooltip": "Specify the maximum number of records to return in response. Default value is 100.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Default value is 0. If you specify this parameter then you must also specify the limit parameter.",
+          "tooltip": "Specify the offset to fetch the records. Default value is 0. If you specify this parameter then you must also specify the limit parameter.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        }
+      ],
+      "output_schema": {
+        "analysis": [
+          {
+            "id": "",
+            "timefirsttest": "",
+            "timeconfirmtest": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_result_of_analysis",
+      "title": "Get Result of Analysis",
+      "description": "Retrieves the raw result based on the parameters that you have specified.",
+      "annotation": "get_result_of_analysis",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Analysis ID",
+          "description": "Specify the analysis ID to get the result data. You can get the analysis ID from the Get Root Cause Analysis action.",
+          "tooltip": "Specify the analysis ID to get the result data. You can get the analysis ID from the Get Root Cause Analysis action.",
+          "name": "analysisid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Check ID",
+          "description": "Specify the check ID to get the result data.",
+          "tooltip": "Specify the check ID to get the result data.",
+          "name": "checkid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "analysisresult": {
+          "tasks": [
+            {
+              "result": [
+                {
+                  "name": "",
+                  "value": ""
+                }
+              ],
+              "status": "",
+              "task_pk": "",
+              "time_end": "",
+              "time_start": "",
+              "analyzer_id": ""
+            }
+          ],
+          "sensor_pk": "",
+          "analysis_type": "",
+          "custom_message": "",
+          "time_triggered": ""
+        },
+        "firststatusdesc": "",
+        "confirmstatusdesc": "",
+        "firststatusdesclong": "",
+        "confirmstatusdesclong": ""
+      }
+    },
+    {
+      "operation": "get_raw_test_results_list",
+      "title": "Get Raw Test Results List",
+      "description": "Retrieves the detailed list of raw test results based on the parameters that you have specified.",
+      "annotation": "get_raw_test_results_list",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Check ID",
+          "description": "Specify the check ID to fetch the raw test results. You can get the check ID from Get Checks List action.",
+          "tooltip": "Specify the check ID to fetch the raw test results. You can get the check ID from Get Checks List action.",
+          "name": "checkid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Start Datetime",
+          "name": "from",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched. Default value is one day prior to end date.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched. Default value is one day prior to end date.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "to",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched. Default value is current datetime,",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched. Default value is current datetime,",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Maximum Response",
+          "description": "Specify the maximum response time in ms. If set, specified interval must not be larger than 31 days.",
+          "tooltip": "Specify the maximum response time in ms. If set, specified interval must not be larger than 31 days.",
+          "name": "maxresponse",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Minimum Response",
+          "description": "Specify the minimum response time in ms. If set, specified interval must not be larger than 31 days.",
+          "tooltip": "Specify the minimum response time in ms. If set, specified interval must not be larger than 31 days.",
+          "name": "minresponse",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Probes",
+          "description": "Specify the comma separated values of probes to filter the records.",
+          "tooltip": "Specify the comma separated values of probes to filter the records.",
+          "name": "probes",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Status",
+          "description": "Specify the comma separated values of status to filter the records.",
+          "tooltip": "Specify the comma separated values of status to filter the records.",
+          "name": "status",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of records to return in response. Default value is 100.",
+          "tooltip": "Specify the maximum number of records to return in response. Default value is 100.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Default value is 0.",
+          "tooltip": "Specify the offset to fetch the records. Default value is 0.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        }
+      ],
+      "output_schema": {
+        "results": [
+          {
+            "probeid": "",
+            "time": "",
+            "status": "",
+            "responsetime": "",
+            "statusdesc": "",
+            "statusdesclong": ""
+          }
+        ],
+        "activeprobes": []
+      }
+    }
+  ]
+}
