@@ -10,6 +10,10 @@
   "icon_large_name": "large.png",
   "icon_small_name": "small.png",
   "help_online": "",
+  "ingestion_supported": true,
+  "ingestion_modes": [
+    "scheduled"
+  ],
   "configuration": {
     "fields": [
       {
@@ -134,6 +138,16 @@
           "visible": true,
           "editable": true,
           "type": "integer"
+        },
+        {
+          "title": "Fetch All Records",
+          "description": "Select the checkbox to fetch all records.",
+          "tooltip": "Select the checkbox to fetch all records.",
+          "name": "fetch_all_records",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox"
         }
       ],
       "output_schema": {
