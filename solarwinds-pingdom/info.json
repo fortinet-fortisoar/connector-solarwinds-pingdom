@@ -111,8 +111,8 @@
         },
         {
           "title": "Via Medium",
-          "description": "Specify the comma separated values of via mediums to filter the records.",
-          "tooltip": "Specify the comma separated values of via mediums to filter the records.",
+          "description": "Specify the comma separated values of via mediums to filter the records. eg: sms",
+          "tooltip": "Specify the comma separated values of via mediums to filter the records. eg: sms",
           "name": "via",
           "required": false,
           "visible": true,
