@@ -81,6 +81,12 @@ def convert_to_list(value):
         return [value]
 
 
+def get_datetime(value):
+    if isinstance(value, str):
+        return int(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())
+    return value
+
+
 def get_alerts_list(config, params):
     ob = SolarwindsPingdom(config)
     params = build_params(params)
@@ -89,21 +95,37 @@ def get_alerts_list(config, params):
     _to = params.get("to")
     status = params.get("status")
     userids = params.get("userids")
+    fetch_all_records = params.pop("fetch_all_records", False)
     via = params.get("via")
     if checkids:
         params.update(checkids=convert_to_list(checkids))
     if _from:
-        params.update({"from": int(datetime.strptime(_from, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"from": get_datetime(_from)})
     if _to:
-        params.update({"to": int(datetime.strptime(_to, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"to": get_datetime(_to)})
     if status:
         params.update(status=convert_to_list(status))
     if userids:
         params.update(userids=convert_to_list(userids))
     if via:
         params.update(via=convert_to_list(via))
-    response = ob.make_rest_call("/actions", params=params)
-    return response
+    alerts = True
+    alerts_list = []
+    offset = 0
+    if fetch_all_records and not isinstance(params.get("limit"), int):
+        params.update({"limit": 500, "offset": offset})
+        while alerts:
+            response = ob.make_rest_call("/actions", params=params)
+            alerts = response.get("actions", {}).get("alerts", [])
+            alerts_list.extend(alerts)
+            offset += 1
+        actions = {"alerts": alerts_list}
+        response["actions"] = actions
+        logger.info("fetched all records.")
+        return response
+    else:
+        logger.info("fetched data by limit.")
+        return ob.make_rest_call("/actions", params=params)
 
 
 def get_checks_list(config, params):
