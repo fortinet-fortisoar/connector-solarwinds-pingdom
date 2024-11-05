@@ -650,7 +650,6 @@
                   "state": "/api/3/picklists/a1bac09b-1441-45aa-ad1b-c88744e48e72",
                   "source": "Solarwinds Pingdom",
                   "status": "/api/3/picklists/7de816ff-7140-4ee5-bd05-93ce22002146",
-                  "sourceId": "{{vars.item.checkid}}",
                   "__replace": "true",
                   "sourcedata": "{{vars.item | toJSON}}",
                   "ackSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",

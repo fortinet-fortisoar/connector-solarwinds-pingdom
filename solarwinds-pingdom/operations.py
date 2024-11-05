@@ -112,19 +112,21 @@ def get_alerts_list(config, params):
     alerts = True
     alerts_list = []
     offset = 0
+    max_limit = 100
     if fetch_all_records and not isinstance(params.get("limit"), int):
-        params.update({"limit": 500, "offset": offset})
         while alerts:
+            params.update({"limit": max_limit, "offset": offset})
             response = ob.make_rest_call("/actions", params=params)
             alerts = response.get("actions", {}).get("alerts", [])
+            logger.debug(f"fetched {len(alerts)} records for offset {offset}")
             alerts_list.extend(alerts)
-            offset += 1
+            offset += max_limit
         actions = {"alerts": alerts_list}
         response["actions"] = actions
-        logger.info("fetched all records.")
+        logger.debug("fetched all records.")
         return response
     else:
-        logger.info("fetched data by limit.")
+        logger.debug("fetched data by limit.")
         return ob.make_rest_call("/actions", params=params)
 
 
