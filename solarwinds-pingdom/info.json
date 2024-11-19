@@ -60,9 +60,9 @@
       "enabled": true,
       "parameters": [
         {
-          "title": "Alert IDs",
-          "description": "Specify the comma separated values of alert IDs.",
-          "tooltip": "Specify the comma separated values of alert IDs.",
+          "title": "Check IDs",
+          "description": "Specify the comma separated values of check IDs.",
+          "tooltip": "Specify the comma separated values of check IDs.",
           "name": "checkids",
           "required": false,
           "visible": true,
@@ -261,7 +261,9 @@
                 "count": ""
               }
             ],
-            "ipv6": ""
+            "ipv6": "",
+            "severity_level": "",
+            "verify_certificate": ""
           }
         ],
         "counts": {
