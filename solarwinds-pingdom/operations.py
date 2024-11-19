@@ -133,9 +133,6 @@ def get_alerts_list(config, params):
 def get_checks_list(config, params):
     ob = SolarwindsPingdom(config)
     params = build_params(params)
-    tags = params.get("tags")
-    if tags:
-        params.update(tags=convert_to_list(tags))
     response = ob.make_rest_call("/checks", params=params)
     return response
 
@@ -146,9 +143,9 @@ def get_root_cause_analysis(config, params):
     _from = params.get("from")
     _to = params.get("to")
     if _from:
-        params.update({"from": int(datetime.strptime(_from, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"from": get_datetime(_from)})
     if _to:
-        params.update({"to": int(datetime.strptime(_to, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"to": get_datetime(_to)})
     response = ob.make_rest_call(f"/analysis/{params.pop('checkid')}", params=params)
     return response
 
@@ -172,9 +169,9 @@ def get_raw_test_results_list(config, params):
     if status:
         params.update(status=convert_to_list(status))
     if _from:
-        params.update({"from": int(datetime.strptime(_from, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"from": get_datetime(_from)})
     if _to:
-        params.update({"to": int(datetime.strptime(_to, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())})
+        params.update({"to": get_datetime(_to)})
     endpoint = f"/results/{params.pop('checkid')}"
     response = ob.make_rest_call(endpoint, params=params)
     return response
